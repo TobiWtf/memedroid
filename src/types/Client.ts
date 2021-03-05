@@ -1,3 +1,5 @@
+import ClientClass from '../objects/Client'
+
 export interface Client {
     [key: string]: any,
     username: string | undefined,
@@ -5,7 +7,8 @@ export interface Client {
     device_id: string,
     version_code: string,
     OS: string,
-    language: string
+    language: string,
+    client: ClientClass
 }
 
 export interface ClientOpts {
@@ -15,5 +18,6 @@ export interface ClientOpts {
     device_id?: string,
     version_code?: string,
     OS?: string,
-    language?: string
+    language?: string,
+    client?: ClientClass
 }

@@ -2,7 +2,7 @@ import { EventEmitter } from 'events'
 import { Client, ClientOpts } from '../types/Client'
 import axios, { AxiosPromise } from 'axios'
 
-//Make abstract when creating child classes
+
 export default class client extends EventEmitter implements Client {
     public username: string | undefined
     public password: string | undefined
@@ -13,11 +13,13 @@ export default class client extends EventEmitter implements Client {
     public metadata: any
     public client: client
     public language: string
+    public Misc?: any 
+    public Item?: any
     private root: string = 'https://appv2.memedroid.com'
 
-    constructor(opts: ClientOpts, client?: client) {
+    constructor(opts: ClientOpts) {
         super()
-        this.client = client || this;
+        this.client = opts.client || this;
         if (this.client.token) {
             this.token = this.client.token
         }
