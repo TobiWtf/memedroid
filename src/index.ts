@@ -1,1 +1,1 @@
-export * from './objects/Client'
+export * from './objects/App'
