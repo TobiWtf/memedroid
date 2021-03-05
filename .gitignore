@@ -1,0 +1,8 @@
+# Ignore Js Build files where applicable
+*.js
+
+# Remove node_modules
+node_modules
+
+# Remove dev test file
+test.ts

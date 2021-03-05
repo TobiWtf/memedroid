@@ -1,0 +1,16 @@
+{
+  "name": "memedroid-api",
+  "version": "1.0.0",
+  "description": "Wrapper for memedroid",
+  "main": "index.ts",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "events": "^3.3.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/events": "^3.0.0"
+  },
+  "author": "Tobi"
+}
