@@ -19,7 +19,7 @@ export default class client extends EventEmitter implements Client {
 
     constructor(opts: ClientOpts) {
         super()
-        this.client = opts.client || this;
+        this.client = this//opts.client || this;
         if (this.client.token) {
             this.token = this.client.token
         }
@@ -44,7 +44,8 @@ export default class client extends EventEmitter implements Client {
                 username: this.client.username, password: this.client.password
             }
         } else return {
-            accessToken: this.token
+            accessToken: this.token, 
+            access_token: this.token
         }
     }
 
