@@ -18,7 +18,18 @@ export class Comment {
                 comment_id: this.comment_data.id,
                 vote: 1
             })
-        }))
+        })).data
+    }
+
+    public async dislike() {
+        return (await this.client.request({
+            url: '/comments/rate_comment',
+            method: 'POST',
+            data: this.client.data({
+                comment_id: this.comment_data.id,
+                vote: 0
+            })
+        })).data
     }
 
 }

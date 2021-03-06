@@ -21,6 +21,17 @@ export class Post {
                 vote: 1
             })
         })).data
+    }    
+    
+    public async dislike(): Promise<{[key: string]: any}> {
+        return (await this.client.request({
+            url: "/item/rate_item",
+            method: 'POST',
+            data: this.client.data({
+                item_id: this.post_data.id,
+                vote: 0
+            })
+        })).data
     }
 
     public async send_comment(comment: string) {

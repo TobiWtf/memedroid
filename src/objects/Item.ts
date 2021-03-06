@@ -11,6 +11,7 @@ export class Item  {
         this.client = client
     }
     
+    //Period arg can be Day, Week, or Month
     public async get_top_items(opts: GTIOpts): Promise<{[key: string]: any | undefined}[]> {
         let posts: any = [];
         let data = (await this.client.request({
