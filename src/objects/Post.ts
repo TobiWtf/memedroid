@@ -2,14 +2,17 @@
 import Client from './Client'
 import { get_comment_threads_opts } from '../types/Post'
 import { Comment } from './Comment'
+import { Profile } from './Profile'
 
 export class Post {
     public post_data: {[key: string]: any}
     public client: Client
+    public author: Profile
 
     constructor(client: Client, post_data: {[key: string]: any}) {
         this.client = client
         this.post_data = post_data
+        this.author = new Profile(this.client, this.post_data.username)
     }
 
     public async like(): Promise<{[key: string]: any}> {

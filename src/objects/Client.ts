@@ -19,7 +19,7 @@ export default class client extends EventEmitter implements Client {
 
     constructor(opts: ClientOpts) {
         super()
-        this.client = this//opts.client || this;
+        this.client = opts.client || this;
         if (this.client.token) {
             this.token = this.client.token
         }
@@ -83,4 +83,6 @@ export default class client extends EventEmitter implements Client {
             return data
         } else throw new Error(`Could not login, data is as follows ${data.toString()}`)
     }
+
+
 }

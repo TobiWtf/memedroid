@@ -1,3 +1,4 @@
+import { Channel } from './Channel'
 import Client from './Client'
 
 export class Profile {
@@ -72,5 +73,48 @@ export class Profile {
             users.push(new Profile(this.client, user.username))
         });
         return users
+    }
+
+    public async follow() {
+        return (await this.client.request({
+            url: '/subscriptions/follow_user',
+            method: 'POST',
+            data: this.client.data({
+                username: this.profile_name
+            })
+        }))
+    }
+
+    public async unfollow() {
+        return (await this.client.request({
+            url: '/subscriptions/unfollow_user',
+            method: 'POST',
+            data: this.client.data({
+                username: this.profile_name
+            })
+        }))
+    }
+
+    //Return channel
+    public async send_chat(message: string) {
+        return new Channel(this.client, (await this.client.request({
+            url: '/chat/send_message_to_user',
+            method: 'POST',
+            data: this.client.data({
+                username: this.profile_name,
+                message: message
+            })
+        })).data.room_id)
+    }
+
+    //Make chat class, then start making chat lib, This will take a long time
+    public async get_chat_room_with_user() {
+        return (await this.client.request({
+            url: '/chat/get_room_with_user',
+            method: 'GET',
+            data: this.client.data({
+                username: this.profile_name
+            })
+        })).data
     }
 }
